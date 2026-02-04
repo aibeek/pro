@@ -13,14 +13,10 @@ export function BrandsSection({
 }) {
   const titleId = `${id}-title`
   const hasHeader = showHeader && Boolean(title)
+  const marqueeBrands = [...brands, ...brands]
 
   return (
-    <section
-      id={id}
-      className={hasHeader ? styles.section : styles.sectionTight}
-      aria-labelledby={hasHeader ? titleId : undefined}
-      aria-label={hasHeader ? undefined : 'Бренды'}
-    >
+    <div id={id} className={styles.root} aria-labelledby={hasHeader ? titleId : undefined} aria-label={hasHeader ? undefined : 'Бренды'}>
       {hasHeader && (
         <div className={styles.headerRow}>
           <h2 id={titleId} className={styles.title}>
@@ -33,22 +29,21 @@ export function BrandsSection({
       )}
       <div className={hasHeader ? styles.marquee : styles.marqueeTight} role="region" aria-label="Бегущая строка брендов">
         <div className={styles.track}>
-          <div className={styles.group} role="list" aria-label="Список брендов">
-            {brands.map((brand) => (
-              <div key={brand} className={styles.brand} role="listitem">
+          {marqueeBrands.map((brand, idx) => {
+            const isHiddenCopy = idx >= brands.length
+            return (
+              <div
+                key={`${brand}-${idx}`}
+                className={styles.brand}
+                role={isHiddenCopy ? undefined : 'listitem'}
+                aria-hidden={isHiddenCopy ? 'true' : undefined}
+              >
                 {brand}
               </div>
-            ))}
-          </div>
-          <div className={styles.group} aria-hidden="true">
-            {brands.map((brand) => (
-              <div key={`${brand}-dup`} className={styles.brand}>
-                {brand}
-              </div>
-            ))}
-          </div>
+            )
+          })}
         </div>
       </div>
-    </section>
+    </div>
   )
 }

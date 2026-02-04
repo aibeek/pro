@@ -1,15 +1,5 @@
-.section {
-  background: var(--brand-surface);
-  border: 1px solid var(--brand-border);
-  border-radius: 1.25rem;
-  padding: 1rem;
-}
-
-.sectionTight {
-  background: var(--brand-surface);
-  border: 1px solid var(--brand-border);
-  border-radius: 1.25rem;
-  padding: 0.65rem;
+.root {
+  display: block;
 }
 
 .headerRow {
@@ -74,12 +64,12 @@
 
 .marqueeTight::before {
   left: 0;
-  background: linear-gradient(90deg, var(--brand-surface), transparent);
+  background: linear-gradient(90deg, var(--brand-bg), transparent);
 }
 
 .marqueeTight::after {
   right: 0;
-  background: linear-gradient(270deg, var(--brand-surface), transparent);
+  background: linear-gradient(270deg, var(--brand-bg), transparent);
 }
 
 .marquee::before {
@@ -97,17 +87,11 @@
   width: max-content;
   gap: 0.6rem;
   animation: brands-marquee 18s linear infinite;
+  padding-right: 0.6rem;
 }
 
 .marquee:hover .track {
   animation-play-state: paused;
-}
-
-.group {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.6rem;
-  padding-right: 0.6rem;
 }
 
 @keyframes brands-marquee {
@@ -120,7 +104,8 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .marquee {
+  .marquee,
+  .marqueeTight {
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
   }

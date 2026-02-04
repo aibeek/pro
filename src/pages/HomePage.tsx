@@ -6,14 +6,12 @@ import { ticketTableRows } from '../data/ticketTableRows'
 export function HomePage() {
   const brands = useMemo(
     () => [
-      'Burger King',
-      'KFC',
-      'McDonald’s',
-      'Subway',
-      'Domino’s',
-      'Papa Johns',
-      'Dodo Pizza',
-      'Taco Bell',
+      'Don Shaurmeone',
+      'Kebab',
+      'Хинкалайсын',
+      'Lucky Taste',
+      'Дон Хинкалионе',
+      'Toast Time',
     ],
     [],
   )
