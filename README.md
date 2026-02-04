@@ -1,6 +1,6 @@
 # Fastfood Rank
 
-Учебный веб‑проект (Vite + React + TypeScript) с адаптивной версткой (320px+), CSS‑переменными по палитре, доступностью (ARIA) и unit‑тестами.
+Учебный веб‑проект (Vite + React + TypeScript) с адаптивной версткой (320px+), CSS‑переменными по палитре и доступностью (ARIA).
 
 ## Страницы
 
@@ -16,6 +16,5 @@
 npm i
 npm run dev
 npm run build
-npm test
 npm run lint
 ```
