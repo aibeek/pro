@@ -14,7 +14,7 @@ type Column = {
 }
 
 const columns: Column[] = [
-  { key: 'id', label: 'ID', getValue: (r) => r.id },
+  { key: 'id', label: '#', getValue: (r) => r.id },
   { key: 'name', label: 'Имя', getValue: (r) => r.name },
   {
     key: 'amount',
@@ -32,7 +32,7 @@ const columns: Column[] = [
   },
   {
     key: 'ticketsCount',
-    label: 'Кол-во билетов',
+    label: 'Кол-во',
     numeric: true,
     getValue: (r) => r.ticketsCount,
     format: (r) => r.ticketsCount.toLocaleString('ru-RU'),
@@ -82,6 +82,13 @@ export function RatingTable({ id, title, rows }: { id: string; title: string; ro
 
       <div className={styles.tableWrap} role="region" aria-label="Таблица рейтинга" tabIndex={0}>
         <table className={styles.table}>
+          <colgroup>
+            <col className={styles.colId} />
+            <col className={styles.colName} />
+            <col className={styles.colAmount} />
+            <col className={styles.colPercent} />
+            <col className={styles.colCount} />
+          </colgroup>
           <thead className={styles.thead}>
             <tr>
               {columns.map((col) => {
@@ -113,8 +120,8 @@ export function RatingTable({ id, title, rows }: { id: string; title: string; ro
           <tbody>
             {sorted.map((row) => (
               <tr key={row.id} className={styles.tr}>
-                <td className={styles.td}>{row.id}</td>
-                <td className={styles.td}>{row.name}</td>
+                <td className={styles.tdId}>{row.id}</td>
+                <td className={styles.tdName}>{row.name}</td>
                 <td className={styles.tdNumeric} aria-label={`Сумма ${row.amount.toLocaleString('ru-RU')}`}>
                   {row.amount.toLocaleString('ru-RU')}
                 </td>

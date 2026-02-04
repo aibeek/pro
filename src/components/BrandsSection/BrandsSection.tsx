@@ -17,7 +17,7 @@ export function BrandsSection({
   return (
     <section
       id={id}
-      className={styles.section}
+      className={hasHeader ? styles.section : styles.sectionTight}
       aria-labelledby={hasHeader ? titleId : undefined}
       aria-label={hasHeader ? undefined : 'Бренды'}
     >
@@ -31,7 +31,7 @@ export function BrandsSection({
           </span>
         </div>
       )}
-      <div className={styles.marquee} role="region" aria-label="Бегущая строка брендов">
+      <div className={hasHeader ? styles.marquee : styles.marqueeTight} role="region" aria-label="Бегущая строка брендов">
         <div className={styles.track}>
           <div className={styles.group} role="list" aria-label="Список брендов">
             {brands.map((brand) => (

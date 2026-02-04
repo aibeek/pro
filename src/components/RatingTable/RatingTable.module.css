@@ -35,7 +35,8 @@
   margin-top: 0.8rem;
   border: 1px solid var(--brand-border);
   border-radius: 1rem;
-  overflow: auto;
+  overflow-x: hidden;
+  overflow-y: auto;
   background: var(--brand-surface);
   -webkit-overflow-scrolling: touch;
 }
@@ -49,7 +50,37 @@
   width: 100%;
   border-collapse: separate;
   border-spacing: 0;
-  min-width: 720px;
+  table-layout: fixed;
+}
+
+@media (min-width: 720px) {
+  .tableWrap {
+    overflow-x: auto;
+  }
+
+  .table {
+    table-layout: auto;
+  }
+}
+
+.colId {
+  width: 2.75rem;
+}
+
+.colAmount {
+  width: 5.5rem;
+}
+
+.colPercent {
+  width: 3.25rem;
+}
+
+.colCount {
+  width: 4.5rem;
+}
+
+.colName {
+  width: auto;
 }
 
 .thead {
@@ -126,9 +157,19 @@
   color: var(--brand-primary);
 }
 
-.td {
+.tdId {
   padding: 0.7rem 0.75rem;
   border-bottom: 1px solid var(--brand-border);
+  white-space: nowrap;
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+}
+
+.tdName {
+  padding: 0.7rem 0.75rem;
+  border-bottom: 1px solid var(--brand-border);
+  overflow: hidden;
+  text-overflow: ellipsis;
   white-space: nowrap;
 }
 
@@ -138,4 +179,39 @@
   text-align: right;
   white-space: nowrap;
   font-variant-numeric: tabular-nums;
+}
+
+@media (max-width: 520px) {
+  .sortBtn {
+    padding: 0.6rem 0.5rem;
+    gap: 0.4rem;
+    font-size: 0.88rem;
+  }
+
+  .sortIcon {
+    display: none;
+  }
+
+  .tdId,
+  .tdName,
+  .tdNumeric {
+    padding: 0.6rem 0.5rem;
+    font-size: 0.9rem;
+  }
+
+  .colId {
+    width: 2.25rem;
+  }
+
+  .colAmount {
+    width: 4.75rem;
+  }
+
+  .colPercent {
+    width: 2.9rem;
+  }
+
+  .colCount {
+    width: 3.9rem;
+  }
 }
