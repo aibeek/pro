@@ -1,0 +1,14 @@
+node_modules
+dist
+coverage
+.DS_Store
+.npmrc
+.pnpm-store
+.turbo
+.vite
+.eslintcache
+.swc
+.env
+.env.local
+.vscode
+.idea

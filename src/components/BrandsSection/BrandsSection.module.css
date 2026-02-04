@@ -1,0 +1,61 @@
+.section {
+  background: var(--brand-surface);
+  border: 1px solid var(--brand-border);
+  border-radius: 1.25rem;
+  padding: 1rem;
+}
+
+.headerRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.title {
+  font-size: 1.125rem;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+}
+
+.badge {
+  flex: 0 0 auto;
+  background: var(--brand-accent);
+  border: 1px solid var(--brand-text);
+  color: var(--brand-text);
+  padding: 0.35rem 0.6rem;
+  border-radius: 999px;
+  font-weight: 900;
+  font-size: 0.9rem;
+}
+
+.grid {
+  margin-top: 0.75rem;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.6rem;
+}
+
+@media (min-width: 520px) {
+  .grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+.brand {
+  border: 1px solid var(--brand-border);
+  background: var(--brand-surface);
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--brand-accent) 12%, var(--brand-surface)),
+    var(--brand-surface)
+  );
+  border-radius: 1rem;
+  padding: 0.65rem 0.75rem;
+  font-weight: 800;
+  font-size: 0.92rem;
+  line-height: 1.2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
