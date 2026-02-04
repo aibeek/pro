@@ -1,6 +1,7 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import styles from './App.module.css'
 import { AppHeader } from './components/AppHeader/AppHeader'
+import { BrandsSection } from './components/BrandsSection/BrandsSection'
 import { BottomNav, type NavKey } from './components/BottomNav/BottomNav'
 import { HomePage } from './pages/HomePage'
 import { ChampionsPage } from './pages/ChampionsPage'
@@ -9,10 +10,15 @@ import { MenuPage } from './pages/MenuPage'
 import { ProfilePage } from './pages/ProfilePage'
 
 export default function App() {
+  const brands = useMemo(
+    () => ['Don Shaurmeone', 'Kebab', 'Хинкалайсын', 'Lucky Taste', 'Дон Хинкалионе', 'Toast Time'],
+    [],
+  )
+
   const stats = [
-    { label: 'Город', value: 360 },
-    { label: 'Страны', value: 2400 },
-    { label: 'Мир', value: 8200 },
+    { label: 'Город', value: 360, icon: 'city' as const },
+    { label: 'Страны', value: 2400, icon: 'countries' as const },
+    { label: 'Мир', value: 8200, icon: 'world' as const },
   ]
 
   const [route, setRoute] = useState<'home' | 'champions' | 'promos' | 'menu' | 'profile'>(() => {
@@ -54,6 +60,9 @@ export default function App() {
       <AppHeader stats={stats} />
 
       <main className={styles.main} aria-label="Контент">
+        <div className={styles.brandsBar}>
+          <BrandsSection id="brands" brands={brands} showHeader={false} />
+        </div>
         {route === 'home' && <HomePage />}
         {route === 'champions' && <ChampionsPage />}
         {route === 'promos' && <PromosPage />}

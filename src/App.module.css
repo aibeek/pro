@@ -35,10 +35,22 @@
   gap: 1rem;
 }
 
+.brandsBar {
+  position: sticky;
+  top: var(--app-header-h, 0px);
+  z-index: 39;
+  padding-top: 0.65rem;
+  background: var(--brand-bg);
+}
+
 @media (min-width: 768px) {
   .main {
     padding: calc(var(--app-header-h, 0px) + 1.25rem) 1.5rem 5.5rem;
     gap: 1.25rem;
+  }
+
+  .brandsBar {
+    padding-top: 0.85rem;
   }
 }
 

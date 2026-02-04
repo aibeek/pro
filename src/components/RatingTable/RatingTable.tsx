@@ -32,7 +32,7 @@ const columns: Column[] = [
   },
   {
     key: 'ticketsCount',
-    label: 'Кол-во',
+    label: 'Кол-во билетов',
     numeric: true,
     getValue: (r) => r.ticketsCount,
     format: (r) => r.ticketsCount.toLocaleString('ru-RU'),
@@ -107,7 +107,15 @@ export function RatingTable({ id, title, rows }: { id: string; title: string; ro
                       onClick={() => onSort(col.key)}
                       aria-label={`Сортировать по: ${col.label}`}
                     >
-                      <span className={styles.thLabel}>{col.label}</span>
+                      <span className={styles.thLabel}>
+                        {col.key === 'ticketsCount' ? (
+                          <>
+                            Кол-во<wbr />билетов
+                          </>
+                        ) : (
+                          col.label
+                        )}
+                      </span>
                       <span className={styles.sortIcon} aria-hidden="true">
                         {isActive ? (sortDir === 'asc' ? '▲' : '▼') : '↕'}
                       </span>

@@ -4,10 +4,33 @@ import styles from './AppHeader.module.css'
 export type HeaderStat = {
   label: string
   value: number
+  icon: 'city' | 'countries' | 'world'
 }
 
 export function AppHeader({ stats }: { stats: HeaderStat[] }) {
   const ref = useRef<HTMLElement | null>(null)
+
+  const renderStatIcon = (icon: HeaderStat['icon']) => {
+    if (icon === 'city') {
+      return (
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+          <path d="M4 21V3h10v4h6v14h-2v-2h-4v2H4Zm2-2h6v-2h6v2V9h-4V5H6v14Zm1-10h2v2H7V9Zm0 4h2v2H7v-2Zm0-8h2v2H7V5Zm4 4h2v2h-2V9Zm0 4h2v2h-2v-2Z" />
+        </svg>
+      )
+    }
+    if (icon === 'countries') {
+      return (
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+          <path d="M6 3h11l-1.2 3L18 9l-1.2 3L18 15l-1.2 3L18 21H6V3Zm2 2v14h7.4l-.6-1.5L16 15l-1.2-3L16 9l-1.2-3L15.4 5H8Z" />
+        </svg>
+      )
+    }
+    return (
+      <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+        <path d="M12 2a10 10 0 1 0 .001 20.001A10 10 0 0 0 12 2Zm7.94 9H17.9a15.7 15.7 0 0 0-1.64-6.03A8.03 8.03 0 0 1 19.94 11ZM12 4c.86 0 2.56 2.07 3.39 7H8.61C9.44 6.07 11.14 4 12 4ZM4.06 13H6.1a15.7 15.7 0 0 0 1.64 6.03A8.03 8.03 0 0 1 4.06 13Zm0-2A8.03 8.03 0 0 1 7.74 4.97 15.7 15.7 0 0 0 6.1 11H4.06ZM12 20c-.86 0-2.56-2.07-3.39-7h6.78C14.56 17.93 12.86 20 12 20Zm4.26-.97A15.7 15.7 0 0 0 17.9 13h2.04a8.03 8.03 0 0 1-3.68 6.03Z" />
+      </svg>
+    )
+  }
 
   useLayoutEffect(() => {
     const el = ref.current
@@ -29,15 +52,10 @@ export function AppHeader({ stats }: { stats: HeaderStat[] }) {
       <div className={styles.inner}>
         <div className={styles.topRow}>
           <div className={styles.brand}>
-            <span className={styles.title}>Fastfood Rank</span>
+            <span className={styles.title}>Lucky Pay</span>
           </div>
 
           <div className={styles.prize} role="status" aria-label="Prize">
-            <span className={styles.prizeIcon} aria-hidden="true">
-              <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
-                <path d="M7 4h10v2h2a1 1 0 0 1 1 1c0 3.314-2.686 6-6 6h-1.1A5.002 5.002 0 0 1 13 15.9V18h3v2H8v-2h3v-2.1A5.002 5.002 0 0 1 11.1 13H10c-3.314 0-6-2.686-6-6a1 1 0 0 1 1-1h2V4Zm0 4H6.05A4.002 4.002 0 0 0 10 11h1V8H7Zm10 0h-4v3h1a4.002 4.002 0 0 0 3.95-3H17Z" />
-              </svg>
-            </span>
             <span className={styles.prizeText}>Февраль</span>
           </div>
 
@@ -47,8 +65,13 @@ export function AppHeader({ stats }: { stats: HeaderStat[] }) {
         <dl className={styles.stats} aria-label="Статистика">
           {stats.map((s) => (
             <div key={s.label} className={styles.stat}>
-              <dt className={styles.statLabel}>{s.label}</dt>
-              <dd className={styles.statValue}>{s.value.toLocaleString('ru-RU')}</dd>
+              <span className={styles.statIcon} aria-hidden="true">
+                {renderStatIcon(s.icon)}
+              </span>
+              <div className={styles.statText}>
+                <dt className={styles.statLabel}>{s.label}</dt>
+                <dd className={styles.statValue}>{s.value.toLocaleString('ru-RU')}</dd>
+              </div>
             </div>
           ))}
         </dl>

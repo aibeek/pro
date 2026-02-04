@@ -7,17 +7,9 @@
 
 .headerRow {
   display: flex;
-  flex-direction: column;
-  gap: 0.35rem;
-}
-
-@media (min-width: 720px) {
-  .headerRow {
-    flex-direction: row;
-    align-items: baseline;
-    justify-content: space-between;
-    gap: 1rem;
-  }
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
 }
 
 .title {
@@ -29,6 +21,7 @@
 .hint {
   color: var(--brand-muted);
   font-size: 0.92rem;
+  white-space: nowrap;
 }
 
 .tableWrap {
@@ -102,14 +95,14 @@
 .th {
   padding: 0;
   border-bottom: 1px solid var(--brand-border);
-  text-align: left;
+  text-align: center;
   white-space: nowrap;
 }
 
 .thNumeric {
   padding: 0;
   border-bottom: 1px solid var(--brand-border);
-  text-align: right;
+  text-align: center;
   white-space: nowrap;
 }
 
@@ -117,7 +110,7 @@
   width: 100%;
   display: inline-flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   gap: 0.65rem;
   padding: 0.75rem 0.75rem;
   background: transparent;
@@ -135,8 +128,10 @@
 }
 
 .thLabel {
-  display: inline-flex;
-  gap: 0.35rem;
+  display: inline-block;
+  max-width: 100%;
+  white-space: normal;
+  line-height: 1.05;
 }
 
 .sortIcon {
@@ -171,12 +166,13 @@
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  text-align: center;
 }
 
 .tdNumeric {
   padding: 0.7rem 0.75rem;
   border-bottom: 1px solid var(--brand-border);
-  text-align: right;
+  text-align: center;
   white-space: nowrap;
   font-variant-numeric: tabular-nums;
 }
