@@ -9,7 +9,7 @@ describe('BottomNav', () => {
     const onNavigate = vi.fn<(key: NavKey) => void>()
 
     function Wrap() {
-      const [active, setActive] = useState<NavKey>('brands')
+      const [active, setActive] = useState<NavKey>('table')
       return (
         <BottomNav
           activeKey={active}

@@ -1,13 +1,13 @@
 import { useMemo, useRef, type KeyboardEvent } from 'react'
 import styles from './BottomNav.module.css'
 
-export type NavKey = 'brands' | 'table' | 'champions' | 'menu' | 'profile'
+export type NavKey = 'table' | 'champions' | 'promos' | 'menu' | 'profile'
 
 const items: Array<{ key: NavKey; label: string }> = [
-  { key: 'brands', label: 'Бренды' },
   { key: 'table', label: 'Таблица' },
   { key: 'champions', label: 'Чемпионы' },
-  { key: 'menu', label: 'Меню (Акции и бонусы)' },
+  { key: 'promos', label: 'Акции и бонусы' },
+  { key: 'menu', label: 'Меню' },
   { key: 'profile', label: 'Профиль' },
 ]
 
