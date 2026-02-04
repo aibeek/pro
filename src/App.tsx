@@ -9,6 +9,12 @@ import { MenuPage } from './pages/MenuPage'
 import { ProfilePage } from './pages/ProfilePage'
 
 export default function App() {
+  const stats = [
+    { label: 'Город', value: 360 },
+    { label: 'Страны', value: 2400 },
+    { label: 'Мир', value: 8200 },
+  ]
+
   const [route, setRoute] = useState<'home' | 'champions' | 'promos' | 'menu' | 'profile'>(() => {
     const hash = window.location.hash
     const m = hash.match(/^#\/(champions|promos|menu|profile)$/)
@@ -45,7 +51,7 @@ export default function App() {
         Перейти к таблице рейтинга
       </a>
 
-      <AppHeader />
+      <AppHeader stats={stats} />
 
       <main className={styles.main} aria-label="Контент">
         {route === 'home' && <HomePage />}

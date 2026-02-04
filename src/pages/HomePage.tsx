@@ -1,8 +1,7 @@
 import { useMemo } from 'react'
-import { StatsRow } from '../components/StatsRow/StatsRow'
 import { BrandsSection } from '../components/BrandsSection/BrandsSection'
 import { RatingTable } from '../components/RatingTable/RatingTable'
-import { fastFoodPlaces } from '../data/fastFoodPlaces'
+import { ticketTableRows } from '../data/ticketTableRows'
 
 export function HomePage() {
   const brands = useMemo(
@@ -21,17 +20,8 @@ export function HomePage() {
 
   return (
     <>
-      <StatsRow
-        items={[
-          { label: 'Город', value: 128 },
-          { label: 'Страны', value: 42 },
-          { label: 'Мир', value: 1340 },
-        ]}
-      />
-
-      <BrandsSection id="brands" title="Бренды" brands={brands} />
-
-      <RatingTable id="table" title="Рейтинг фастфуд-объектов" rows={fastFoodPlaces} />
+      <BrandsSection id="brands" brands={brands} showHeader={false} />
+      <RatingTable id="table" title="Таблица" rows={ticketTableRows} />
     </>
   )
 }

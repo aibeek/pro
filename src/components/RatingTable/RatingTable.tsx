@@ -1,25 +1,42 @@
 import { useMemo, useState } from 'react'
 import styles from './RatingTable.module.css'
-import type { FastFoodPlace } from '../../data/fastFoodPlaces'
+import type { TicketTableRow } from '../../data/ticketTableRows'
 
-type SortKey = 'name' | 'city' | 'country' | 'rating' | 'reviews' | 'avgWaitMin' | 'cashbackPercent'
+type SortKey = keyof Pick<TicketTableRow, 'id' | 'name' | 'amount' | 'percent' | 'ticketsCount'>
 type SortDir = 'asc' | 'desc'
 
 type Column = {
   key: SortKey
   label: string
   numeric?: boolean
-  getValue: (row: FastFoodPlace) => string | number
+  getValue: (row: TicketTableRow) => string | number
+  format?: (row: TicketTableRow) => string
 }
 
 const columns: Column[] = [
-  { key: 'name', label: 'Объект', getValue: (r) => r.name },
-  { key: 'city', label: 'Город', getValue: (r) => r.city },
-  { key: 'country', label: 'Страна', getValue: (r) => r.country },
-  { key: 'rating', label: 'Рейтинг', numeric: true, getValue: (r) => r.rating },
-  { key: 'reviews', label: 'Отзывы', numeric: true, getValue: (r) => r.reviews },
-  { key: 'avgWaitMin', label: 'Ожидание, мин', numeric: true, getValue: (r) => r.avgWaitMin },
-  { key: 'cashbackPercent', label: 'Кешбэк, %', numeric: true, getValue: (r) => r.cashbackPercent },
+  { key: 'id', label: 'ID', getValue: (r) => r.id },
+  { key: 'name', label: 'Имя', getValue: (r) => r.name },
+  {
+    key: 'amount',
+    label: 'Сумма',
+    numeric: true,
+    getValue: (r) => r.amount,
+    format: (r) => r.amount.toLocaleString('ru-RU'),
+  },
+  {
+    key: 'percent',
+    label: '%',
+    numeric: true,
+    getValue: (r) => r.percent,
+    format: (r) => `${r.percent}%`,
+  },
+  {
+    key: 'ticketsCount',
+    label: 'Кол-во билетов',
+    numeric: true,
+    getValue: (r) => r.ticketsCount,
+    format: (r) => r.ticketsCount.toLocaleString('ru-RU'),
+  },
 ]
 
 function compare(a: string | number, b: string | number) {
@@ -32,9 +49,14 @@ function nextDir(currentKey: SortKey, key: SortKey, currentDir: SortDir): SortDi
   return currentDir === 'asc' ? 'desc' : 'asc'
 }
 
-export function RatingTable({ id, title, rows }: { id: string; title: string; rows: FastFoodPlace[] }) {
-  const [sortKey, setSortKey] = useState<SortKey>('rating')
+export function RatingTable({ id, title, rows }: { id: string; title: string; rows: TicketTableRow[] }) {
+  const [sortKey, setSortKey] = useState<SortKey>('amount')
   const [sortDir, setSortDir] = useState<SortDir>('desc')
+
+  const today = useMemo(
+    () => new Intl.DateTimeFormat('ru-RU', { day: '2-digit', month: '2-digit', year: 'numeric' }).format(new Date()),
+    [],
+  )
 
   const sorted = useMemo(() => {
     const dirMul = sortDir === 'asc' ? 1 : -1
@@ -54,7 +76,7 @@ export function RatingTable({ id, title, rows }: { id: string; title: string; ro
           {title}
         </h2>
         <div className={styles.hint} aria-label="Подсказка">
-          Нажмите на заголовок столбца для сортировки
+          {today}
         </div>
       </div>
 
@@ -62,9 +84,6 @@ export function RatingTable({ id, title, rows }: { id: string; title: string; ro
         <table className={styles.table}>
           <thead className={styles.thead}>
             <tr>
-              <th className={styles.rankHead} scope="col">
-                #
-              </th>
               {columns.map((col) => {
                 const isActive = sortKey === col.key
                 const ariaSort = isActive ? (sortDir === 'asc' ? 'ascending' : 'descending') : 'none'
@@ -92,18 +111,19 @@ export function RatingTable({ id, title, rows }: { id: string; title: string; ro
             </tr>
           </thead>
           <tbody>
-            {sorted.map((row, idx) => (
+            {sorted.map((row) => (
               <tr key={row.id} className={styles.tr}>
-                <td className={styles.rankCell}>{idx + 1}</td>
+                <td className={styles.td}>{row.id}</td>
                 <td className={styles.td}>{row.name}</td>
-                <td className={styles.td}>{row.city}</td>
-                <td className={styles.td}>{row.country}</td>
-                <td className={styles.tdNumeric} aria-label={`Рейтинг ${row.rating}`}>
-                  {row.rating.toFixed(1)}
+                <td className={styles.tdNumeric} aria-label={`Сумма ${row.amount.toLocaleString('ru-RU')}`}>
+                  {row.amount.toLocaleString('ru-RU')}
                 </td>
-                <td className={styles.tdNumeric}>{row.reviews.toLocaleString('ru-RU')}</td>
-                <td className={styles.tdNumeric}>{row.avgWaitMin}</td>
-                <td className={styles.tdNumeric}>{row.cashbackPercent}</td>
+                <td className={styles.tdNumeric} aria-label={`Процент ${row.percent}`}>
+                  {row.percent}%
+                </td>
+                <td className={styles.tdNumeric} aria-label={`Количество билетов ${row.ticketsCount.toLocaleString('ru-RU')}`}>
+                  {row.ticketsCount.toLocaleString('ru-RU')}
+                </td>
               </tr>
             ))}
           </tbody>
