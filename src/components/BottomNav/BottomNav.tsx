@@ -5,8 +5,8 @@ export type NavKey = 'table' | 'champions' | 'promos' | 'menu' | 'profile'
 
 const items: Array<{ key: NavKey; label: string }> = [
   { key: 'table', label: 'Таблица' },
-  { key: 'menu', label: 'Меню' },
   { key: 'promos', label: 'Акции и бонусы' },
+  { key: 'menu', label: 'Меню' },
   { key: 'champions', label: 'Чемпионы' },
   { key: 'profile', label: 'Профиль' },
 ]
