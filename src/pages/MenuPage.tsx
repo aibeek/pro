@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react'
+import { useState } from 'react'
 import { Search } from 'lucide-react'
 import { brands } from '@/data/brands'
 import pageStyles from './Page.module.css'
@@ -6,12 +6,6 @@ import styles from './MenuPage.module.css'
 
 export function MenuPage() {
   const [query, setQuery] = useState('')
-
-  const filteredBrands = useMemo(() => {
-    const q = query.trim().toLowerCase()
-    if (!q) return brands
-    return brands.filter((b) => b.toLowerCase().includes(q))
-  }, [query])
 
   return (
     <section className={pageStyles.section} aria-labelledby="menu-title">
@@ -59,15 +53,6 @@ export function MenuPage() {
             )
           })}
         </div>
-      </div>
-
-      <div className={`${pageStyles.grid} ${styles.list}`} role="list" aria-label="Список брендов">
-        {filteredBrands.map((brand) => (
-          <article key={brand} className={pageStyles.card} role="listitem" aria-label={brand}>
-            <div className={pageStyles.name}>{brand}</div>
-            <p className={pageStyles.p}>Выбрать бренд</p>
-          </article>
-        ))}
       </div>
     </section>
   )

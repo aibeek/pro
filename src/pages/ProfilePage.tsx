@@ -16,28 +16,28 @@ export function ProfilePage() {
 
       <div className={styles.card} role="group" aria-label="Профиль пользователя">
         <div className={styles.row}>
+          <span className={styles.muted}>ID</span>
+          <span className={styles.strong}>7777777</span>
+        </div>
+        <div className={styles.row}>
           <span className={styles.muted}>Имя</span>
-          <span className={styles.strong}>Гость</span>
-        </div>
-        <div className={styles.row}>
-          <span className={styles.muted}>Любимый бренд</span>
-          <span className={styles.strong}>Plum Violet</span>
-        </div>
-        <div className={styles.row}>
-          <span className={styles.muted}>Уровень</span>
-          <span className={styles.strong}>Starter</span>
+          <span className={styles.strong}>Terra</span>
         </div>
         <div className={styles.row}>
           <span className={styles.muted}>Номер телефона</span>
-          <span className={styles.strong}>+7 999 000-00-00</span>
+          <span className={styles.strong}>+7 701 492 5555</span>
+        </div>
+        <div className={styles.row}>
+          <span className={styles.muted}>Любимый бренд</span>
+          <span className={styles.strong}>Хинкалайсын</span>
         </div>
         <div className={styles.row}>
           <span className={styles.muted}>Город</span>
-          <span className={styles.strong}>Москва</span>
+          <span className={styles.strong}>Алматы</span>
         </div>
         <div className={styles.row}>
           <span className={styles.muted}>Страна</span>
-          <span className={styles.strong}>Россия</span>
+          <span className={styles.strong}>Казахстан</span>
         </div>
         <div className={styles.row}>
           <span className={styles.muted}>Место в таблице</span>
