@@ -1,5 +1,7 @@
-import { useLayoutEffect, useRef } from 'react'
+import { useLayoutEffect, useRef, useState } from 'react'
 import styles from './AppHeader.module.css'
+import { Button } from '@/components/ui/button'
+import { AuthModal } from '@/components/AuthModal/AuthModal'
 
 export type HeaderStat = {
   label: string
@@ -9,6 +11,7 @@ export type HeaderStat = {
 
 export function AppHeader({ stats }: { stats: HeaderStat[] }) {
   const ref = useRef<HTMLElement | null>(null)
+  const [authOpen, setAuthOpen] = useState(false)
 
   const renderStatIcon = (icon: HeaderStat['icon']) => {
     if (icon === 'city') {
@@ -59,7 +62,11 @@ export function AppHeader({ stats }: { stats: HeaderStat[] }) {
             <span className={styles.prizeText}>Февраль</span>
           </div>
 
-          <div className={styles.topSpacer} aria-hidden="true" />
+          <div className={styles.actions} aria-label="Действия">
+            <Button size="sm" variant="secondary" type="button" onClick={() => setAuthOpen(true)}>
+              Логин
+            </Button>
+          </div>
         </div>
 
         <dl className={styles.stats} aria-label="Статистика">
@@ -76,6 +83,8 @@ export function AppHeader({ stats }: { stats: HeaderStat[] }) {
           ))}
         </dl>
       </div>
+
+      <AuthModal open={authOpen} onOpenChange={setAuthOpen} />
     </header>
   )
 }

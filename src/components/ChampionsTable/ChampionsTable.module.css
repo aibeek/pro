@@ -1,0 +1,94 @@
+.tableWrap {
+  margin-top: 0.8rem;
+  border: 1px solid var(--brand-border);
+  border-radius: 1rem;
+  overflow-x: hidden;
+  overflow-y: auto;
+  background: var(--brand-surface);
+  -webkit-overflow-scrolling: touch;
+}
+
+.tableWrap:focus {
+  outline: 3px solid var(--brand-accent);
+  outline-offset: 2px;
+}
+
+.table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  table-layout: fixed;
+}
+
+@media (min-width: 720px) {
+  .tableWrap {
+    overflow-x: auto;
+  }
+
+  .table {
+    table-layout: auto;
+  }
+}
+
+.thead {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background: var(--brand-surface);
+  background: color-mix(in srgb, var(--brand-surface) 92%, var(--brand-accent));
+}
+
+.th {
+  padding: 0.75rem 0.75rem;
+  border-bottom: 1px solid var(--brand-border);
+  text-align: center;
+  font-weight: 900;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+}
+
+.thSub {
+  display: block;
+  margin-top: 0.15rem;
+  font-size: 0.8rem;
+  font-weight: 800;
+  color: var(--brand-muted);
+  letter-spacing: 0;
+}
+
+.tr:nth-child(2n) {
+  background: #f6f0ff;
+  background: color-mix(in srgb, var(--brand-surface) 92%, var(--brand-primary));
+}
+
+.td {
+  padding: 0.7rem 0.75rem;
+  border-bottom: 1px solid var(--brand-border);
+  text-align: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.tdMonth {
+  padding: 0.7rem 0.75rem;
+  border-bottom: 1px solid var(--brand-border);
+  text-align: left;
+  font-weight: 900;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@media (max-width: 520px) {
+  .th,
+  .td,
+  .tdMonth {
+    padding: 0.6rem 0.5rem;
+    font-size: 0.9rem;
+  }
+
+  .thSub {
+    display: none;
+  }
+}

@@ -1,0 +1,106 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  background: color-mix(in srgb, black 55%, transparent);
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+}
+
+.dialog {
+  width: min(420px, 100%);
+  border-radius: 1.1rem;
+  background: var(--brand-surface);
+  color: var(--brand-text);
+  border: 1px solid var(--brand-border);
+  box-shadow: 0 18px 60px color-mix(in srgb, black 35%, transparent);
+}
+
+.header {
+  padding: 1rem 1rem 0.75rem;
+  border-bottom: 1px solid color-mix(in srgb, var(--brand-border) 80%, transparent);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.title {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-weight: 900;
+  font-size: 1.05rem;
+  letter-spacing: -0.02em;
+}
+
+.body {
+  padding: 0.9rem 1rem 1rem;
+  display: grid;
+  gap: 0.75rem;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.65rem 0.75rem;
+  border: 1px solid var(--brand-border);
+  border-radius: 0.95rem;
+  background: color-mix(in srgb, var(--brand-primary) 3%, transparent);
+}
+
+.rowTitle {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.rowLabel {
+  font-weight: 900;
+}
+
+.rowHint {
+  font-size: 0.85rem;
+  color: var(--brand-muted);
+}
+
+.toggle {
+  width: 44px;
+  height: 28px;
+  border-radius: 999px;
+  border: 1px solid var(--brand-border);
+  background: color-mix(in srgb, var(--brand-primary) 10%, transparent);
+  position: relative;
+  cursor: pointer;
+}
+
+.toggle[aria-checked='true'] {
+  background: var(--brand-accent);
+  border-color: color-mix(in srgb, var(--brand-text) 60%, var(--brand-border));
+}
+
+.knob {
+  width: 22px;
+  height: 22px;
+  border-radius: 999px;
+  background: var(--brand-surface);
+  border: 1px solid var(--brand-border);
+  position: absolute;
+  top: 50%;
+  left: 3px;
+  transform: translateY(-50%);
+  transition: left 140ms ease;
+}
+
+.toggle[aria-checked='true'] .knob {
+  left: 19px;
+}
+
+.footer {
+  display: flex;
+  justify-content: flex-end;
+  padding-top: 0.25rem;
+}

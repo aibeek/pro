@@ -79,6 +79,13 @@
   height: 1px;
 }
 
+.actions {
+  justify-self: end;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
 .stats {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -114,6 +121,7 @@
 .statLabel {
   margin: 0;
   font-size: 0.8rem;
+  font-weight: 800;
   opacity: 0.9;
 }
 

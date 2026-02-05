@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useState } from 'react'
 import styles from './App.module.css'
 import { AppHeader } from './components/AppHeader/AppHeader'
 import { BrandsSection } from './components/BrandsSection/BrandsSection'
@@ -8,13 +8,9 @@ import { ChampionsPage } from './pages/ChampionsPage'
 import { PromosPage } from './pages/PromosPage'
 import { MenuPage } from './pages/MenuPage'
 import { ProfilePage } from './pages/ProfilePage'
+import { brands } from './data/brands'
 
 export default function App() {
-  const brands = useMemo(
-    () => ['Don Shaurmeone', 'Kebab', 'Хинкалайсын', 'Lucky Taste', 'Дон Хинкалионе', 'Toast Time'],
-    [],
-  )
-
   const stats = [
     { label: 'Город', value: 360, icon: 'city' as const },
     { label: 'Страны', value: 2400, icon: 'countries' as const },
