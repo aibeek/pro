@@ -13,7 +13,7 @@ import { brands } from './data/brands'
 export default function App() {
   const stats = [
     { label: 'Город', value: 360, icon: 'city' as const },
-    { label: 'Страны', value: 2400, icon: 'countries' as const },
+    { label: 'Страна', value: 2400, icon: 'countries' as const },
     { label: 'Мир', value: 8200, icon: 'world' as const },
   ]
 
@@ -42,7 +42,7 @@ export default function App() {
       })
       return
     }
-    window.location.hash = `#/${key}`
+    window.location.hash = `#/${key}$`
   }
 
   const activeKey: NavKey = route === 'home' ? 'table' : route

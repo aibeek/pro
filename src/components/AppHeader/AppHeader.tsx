@@ -72,16 +72,15 @@ export function AppHeader({ stats }: { stats: HeaderStat[] }) {
         <dl className={styles.stats} aria-label="Статистика">
           {stats.map((s) => (
             <div key={s.label} className={styles.stat}>
-              <span className={styles.statIcon} aria-hidden="true">
-                {renderStatIcon(s.icon)}
-              </span>
-              <div className={styles.statText}>
+              <div className={styles.statTop}>
                 <dt className={styles.statLabel}>{s.label}</dt>
-                <dd className={styles.statValue}>
-                  <span className={styles.dollarIcon} aria-hidden="true">$</span>
-                  {s.value.toLocaleString('ru-RU')}
-                </dd>
+                <span className={styles.statIcon} aria-hidden="true">
+                  {renderStatIcon(s.icon)}
+                </span>
               </div>
+              <dd className={styles.statValue}>
+                {s.value.toLocaleString('ru-RU')} <span className={styles.dollarIcon} aria-hidden="true">$</span>
+              </dd>
             </div>
           ))}
         </dl>

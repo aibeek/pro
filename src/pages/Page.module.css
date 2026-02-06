@@ -50,9 +50,10 @@
 }
 
 .p {
-  margin-top: 0.15rem;
+  margin-top: 0.3rem;
   color: var(--brand-muted);
-  font-size: 0.75rem;
+  font-size: 0.9rem;
+  line-height: 1.4;
 }
 
 .grid {
@@ -79,6 +80,31 @@
   display: flex;
   align-items: center;
   gap: 0.6rem;
+}
+
+.cardToggleBtn {
+  margin-left: auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.75rem;
+  height: 1.75rem;
+  border: 1px solid var(--brand-border);
+  border-radius: 0.5rem;
+  background: var(--brand-surface);
+  color: var(--brand-primary);
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s;
+}
+
+.cardToggleBtn:hover {
+  background: color-mix(in srgb, var(--brand-primary) 8%, var(--brand-surface));
+  border-color: var(--brand-primary);
+}
+
+.cardToggleBtn:focus-visible {
+  outline: 2px solid var(--brand-accent);
+  outline-offset: 1px;
 }
 
 .rank {

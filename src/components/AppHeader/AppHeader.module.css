@@ -99,23 +99,23 @@
   padding: 0.5rem 0.6rem;
   background: color-mix(in srgb, white 8%, transparent);
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 0.55rem;
-  text-align: left;
+  gap: 0.2rem;
+  text-align: center;
+}
+
+.statTop {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
 }
 
 .statIcon {
   display: inline-flex;
   opacity: 0.95;
   flex: 0 0 auto;
-}
-
-.statText {
-  min-width: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
 }
 
 .statLabel {

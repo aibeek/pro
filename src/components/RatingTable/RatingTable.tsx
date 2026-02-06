@@ -131,11 +131,13 @@ export function RatingTable({ id, title, rows }: { id: string; title: string; ro
               })}
             </tr>
             <tr className={styles.trTotalsHeader}>
-              <td className={styles.tdTotalHeader}>{rows.length}</td>
               <td className={styles.tdTotalHeader}>Всего</td>
+              <td className={styles.tdTotalHeader}>{rows.length}</td>
               <td className={styles.tdTotalHeader}>{totals.totalAmount.toLocaleString('ru-RU')}</td>
               <td className={styles.tdTotalHeader}>100%</td>
-              <td className={styles.tdTotalHeader}>{totals.totalTickets.toLocaleString('ru-RU')}</td>
+              <td className={styles.tdTotalHeader}>
+                {totals.totalTickets.toLocaleString('ru-RU')}
+              </td>
             </tr>
           </thead>
           <tbody>
