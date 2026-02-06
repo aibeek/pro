@@ -42,7 +42,7 @@ export default function App() {
       })
       return
     }
-    window.location.hash = `#/${key}$`
+    window.location.hash = `#/${key}`
   }
 
   const activeKey: NavKey = route === 'home' ? 'table' : route
