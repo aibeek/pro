@@ -1,11 +1,12 @@
 .tableWrap {
-  margin-top: 0.8rem;
+  margin-top: 0.5rem;
   border: 1px solid var(--brand-border);
-  border-radius: 1rem;
+  border-radius: 0.75rem;
   overflow-x: hidden;
   overflow-y: auto;
   background: var(--brand-surface);
   -webkit-overflow-scrolling: touch;
+  max-width: 340px;
 }
 
 .tableWrap:focus {
@@ -39,12 +40,13 @@
 }
 
 .th {
-  padding: 0.75rem 0.75rem;
+  padding: 0.4rem 0.35rem;
   border-bottom: 1px solid var(--brand-border);
   text-align: center;
   font-weight: 900;
   letter-spacing: -0.01em;
   white-space: nowrap;
+  font-size: 0.8rem;
 }
 
 .thSub {
@@ -62,30 +64,32 @@
 }
 
 .td {
-  padding: 0.7rem 0.75rem;
+  padding: 0.35rem 0.35rem;
   border-bottom: 1px solid var(--brand-border);
   text-align: center;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  font-size: 0.8rem;
 }
 
 .tdMonth {
-  padding: 0.7rem 0.75rem;
+  padding: 0.35rem 0.35rem;
   border-bottom: 1px solid var(--brand-border);
   text-align: left;
   font-weight: 900;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  font-size: 0.8rem;
 }
 
 @media (max-width: 520px) {
   .th,
   .td,
   .tdMonth {
-    padding: 0.6rem 0.5rem;
-    font-size: 0.9rem;
+    padding: 0.3rem 0.3rem;
+    font-size: 0.75rem;
   }
 
   .thSub {

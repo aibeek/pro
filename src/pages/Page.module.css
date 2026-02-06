@@ -2,24 +2,57 @@
   background: var(--brand-surface);
   border: 1px solid var(--brand-border);
   border-radius: 1.25rem;
-  padding: 1rem;
+  padding: 0.75rem;
 }
 
 @media (min-width: 768px) {
   .section {
-    padding: 1.25rem;
+    padding: 1rem;
   }
 }
 
 .h2 {
-  font-size: 1.125rem;
+  font-size: 0.85rem;
   font-weight: 900;
   letter-spacing: -0.02em;
 }
 
+.headerRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.toggleBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.5rem 0.85rem;
+  border: 1px solid var(--brand-border);
+  border-radius: 0.75rem;
+  background: var(--brand-surface);
+  color: var(--brand-primary);
+  font-weight: 700;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s;
+}
+
+.toggleBtn:hover {
+  background: color-mix(in srgb, var(--brand-primary) 8%, var(--brand-surface));
+  border-color: var(--brand-primary);
+}
+
+.toggleBtn:focus-visible {
+  outline: 3px solid var(--brand-accent);
+  outline-offset: 2px;
+}
+
 .p {
-  margin-top: 0.35rem;
+  margin-top: 0.15rem;
   color: var(--brand-muted);
+  font-size: 0.75rem;
 }
 
 .grid {

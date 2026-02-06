@@ -1,37 +1,38 @@
 .section {
   background: var(--brand-surface);
   border: 1px solid var(--brand-border);
-  border-radius: 1.25rem;
-  padding: 1rem;
+  border-radius: 1rem;
+  padding: 0.75rem;
 }
 
 .headerRow {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 1rem;
+  gap: 0.75rem;
 }
 
 .title {
-  font-size: 1.125rem;
+  font-size: 0.95rem;
   font-weight: 900;
   letter-spacing: -0.02em;
 }
 
 .hint {
   color: var(--brand-muted);
-  font-size: 0.92rem;
+  font-size: 0.8rem;
   white-space: nowrap;
 }
 
 .tableWrap {
-  margin-top: 0.8rem;
+  margin-top: 0.5rem;
   border: 1px solid var(--brand-border);
-  border-radius: 1rem;
+  border-radius: 0.75rem;
   overflow-x: hidden;
   overflow-y: auto;
   background: var(--brand-surface);
   -webkit-overflow-scrolling: touch;
+  max-width: 380px;
 }
 
 .tableWrap:focus {
@@ -57,19 +58,19 @@
 }
 
 .colId {
-  width: 2.75rem;
+  width: 2rem;
 }
 
 .colAmount {
-  width: 5.5rem;
+  width: 4.5rem;
 }
 
 .colPercent {
-  width: 3.25rem;
+  width: 2.5rem;
 }
 
 .colCount {
-  width: 4.5rem;
+  width: 3.5rem;
 }
 
 .colName {
@@ -111,12 +112,13 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 0.65rem;
-  padding: 0.75rem 0.75rem;
+  gap: 0.4rem;
+  padding: 0.5rem 0.4rem;
   background: transparent;
   border: 0;
   color: inherit;
   font-weight: 900;
+  font-size: 0.8rem;
   letter-spacing: -0.01em;
   cursor: pointer;
 }
@@ -153,28 +155,70 @@
 }
 
 .tdId {
-  padding: 0.7rem 0.75rem;
+  padding: 0.45rem 0.4rem;
   border-bottom: 1px solid var(--brand-border);
   white-space: nowrap;
   text-align: center;
   font-variant-numeric: tabular-nums;
+  font-size: 0.8rem;
 }
 
 .tdName {
-  padding: 0.7rem 0.75rem;
+  padding: 0.45rem 0.4rem;
   border-bottom: 1px solid var(--brand-border);
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
   text-align: center;
+  font-size: 0.8rem;
 }
 
 .tdNumeric {
-  padding: 0.7rem 0.75rem;
+  padding: 0.45rem 0.4rem;
   border-bottom: 1px solid var(--brand-border);
   text-align: center;
   white-space: nowrap;
   font-variant-numeric: tabular-nums;
+  font-size: 0.8rem;
+}
+
+.tfoot {
+  background: color-mix(in srgb, var(--brand-surface) 85%, var(--brand-primary));
+  font-weight: 900;
+}
+
+.trTotalsHeader {
+  background: color-mix(in srgb, var(--brand-surface) 80%, var(--brand-accent));
+}
+
+.tdTotalHeader {
+  padding: 0.4rem 0.4rem;
+  text-align: center;
+  font-weight: 800;
+  font-size: 0.75rem;
+  color: var(--brand-primary);
+  border-bottom: 1px solid var(--brand-border);
+}
+
+.trTotal {
+  border-top: 2px solid var(--brand-primary);
+}
+
+.tdTotal {
+  padding: 0.5rem 0.4rem;
+  text-align: center;
+  font-weight: 900;
+  color: var(--brand-primary);
+  font-size: 0.8rem;
+}
+
+.tdTotalNumeric {
+  padding: 0.5rem 0.4rem;
+  text-align: center;
+  font-weight: 900;
+  font-variant-numeric: tabular-nums;
+  color: var(--brand-primary);
+  font-size: 0.8rem;
 }
 
 @media (max-width: 520px) {

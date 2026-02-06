@@ -64,6 +64,12 @@ export function RatingTable({ id, title, rows }: { id: string; title: string; ro
     return [...rows].sort((ra, rb) => dirMul * compare(col.getValue(ra), col.getValue(rb)))
   }, [rows, sortDir, sortKey])
 
+  const totals = useMemo(() => {
+    const totalAmount = rows.reduce((sum, row) => sum + row.amount, 0)
+    const totalTickets = rows.reduce((sum, row) => sum + row.ticketsCount, 0)
+    return { totalAmount, totalTickets }
+  }, [rows])
+
   const onSort = (key: SortKey) => {
     setSortDir((d) => nextDir(sortKey, key, d))
     setSortKey(key)
@@ -123,6 +129,13 @@ export function RatingTable({ id, title, rows }: { id: string; title: string; ro
                   </th>
                 )
               })}
+            </tr>
+            <tr className={styles.trTotalsHeader}>
+              <td className={styles.tdTotalHeader}>{rows.length}</td>
+              <td className={styles.tdTotalHeader}>Всего</td>
+              <td className={styles.tdTotalHeader}>{totals.totalAmount.toLocaleString('ru-RU')}</td>
+              <td className={styles.tdTotalHeader}>100%</td>
+              <td className={styles.tdTotalHeader}>{totals.totalTickets.toLocaleString('ru-RU')}</td>
             </tr>
           </thead>
           <tbody>

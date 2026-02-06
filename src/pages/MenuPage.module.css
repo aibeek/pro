@@ -1,13 +1,13 @@
-.searchSection {
-  margin-top: 0.85rem;
+.orbitWrap {
+  margin-top: 0.5rem;
+  display: flex;
+  justify-content: center;
 }
 
 .orbit {
   position: relative;
-  width: min(520px, 100%);
-  margin: 0 auto;
-  height: clamp(320px, 92vw, 520px);
-  min-height: 320px;
+  width: 280px;
+  height: 280px;
 }
 
 .center {
@@ -15,35 +15,29 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: clamp(210px, 62%, 320px);
-}
-
-.srOnly {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border-width: 0;
+  z-index: 2;
 }
 
 .search {
   display: flex;
   align-items: center;
-  gap: 0.6rem;
-  padding: 0.7rem 0.85rem;
+  gap: 0.4rem;
+  padding: 0.45rem 0.65rem;
   border-radius: 999px;
   border: 1px solid var(--brand-border);
   background: var(--brand-surface);
-  box-shadow: 0 10px 40px color-mix(in srgb, var(--brand-primary) 10%, transparent);
+  box-shadow: 0 4px 20px color-mix(in srgb, var(--brand-primary) 10%, transparent);
+  width: 120px;
+}
+
+.search:focus-within {
+  border-color: var(--brand-primary);
+  box-shadow: 0 4px 20px color-mix(in srgb, var(--brand-primary) 15%, transparent);
 }
 
 .searchIcon {
   color: var(--brand-primary);
-  flex: 0 0 auto;
+  flex-shrink: 0;
 }
 
 .searchInput {
@@ -53,78 +47,59 @@
   color: var(--brand-text);
   min-width: 0;
   width: 100%;
-  font-size: 1rem;
-}
-
-.search:focus-within {
-  box-shadow:
-    0 10px 40px color-mix(in srgb, var(--brand-primary) 10%, transparent),
-    0 0 0 3px color-mix(in srgb, var(--brand-accent) 70%, transparent);
-  border-color: color-mix(in srgb, var(--brand-accent) 70%, var(--brand-border));
-}
-
-.brand {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 0;
-  height: 0;
-  transform: rotate(var(--angle)) translateX(var(--radius));
-  transform-origin: center;
+  font-size: 0.8rem;
 }
 
 .brandBtn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0.4rem 0.65rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: rotate(var(--angle)) translateX(120px) rotate(calc(-1 * var(--angle))) translate(-50%, -50%);
+  padding: 0.35rem 0.6rem;
   border-radius: 999px;
   border: 1px solid var(--brand-border);
-  background: color-mix(in srgb, var(--brand-primary) 6%, var(--brand-surface));
+  background: var(--brand-surface);
   color: var(--brand-text);
-  font-weight: 800;
-  letter-spacing: -0.01em;
+  font-weight: 700;
+  font-size: 0.75rem;
   cursor: pointer;
-  max-width: 11.5rem;
-  overflow: hidden;
-  text-overflow: ellipsis;
   white-space: nowrap;
-  transform: translate3d(-50%, -50%, 0) rotate(var(--angleNeg));
-  transform-origin: center;
+  transition: background 0.15s, border-color 0.15s;
+}
+
+.brandBtn:hover {
+  background: color-mix(in srgb, var(--brand-primary) 8%, var(--brand-surface));
+  border-color: var(--brand-primary);
 }
 
 .brandBtn:focus-visible {
-  outline: 3px solid var(--brand-accent);
-  outline-offset: 2px;
+  outline: 2px solid var(--brand-accent);
+  outline-offset: 1px;
 }
 
 .brandBtnActive {
   background: var(--brand-accent);
-  border-color: color-mix(in srgb, var(--brand-text) 60%, var(--brand-border));
+  border-color: var(--brand-text);
 }
 
-.list {
-  margin-top: 0.85rem;
-}
-
-@media (max-width: 520px) {
+@media (max-width: 360px) {
+  .orbit {
+    width: 240px;
+    height: 240px;
+  }
+  
   .brandBtn {
-    max-width: 8rem;
-    font-size: 0.75rem;
+    transform: rotate(var(--angle)) translateX(100px) rotate(calc(-1 * var(--angle))) translate(-50%, -50%);
+    font-size: 0.7rem;
     padding: 0.3rem 0.5rem;
   }
-
-  .center {
-    width: clamp(180px, 60%, 280px);
+  
+  .search {
+    width: 100px;
+    padding: 0.4rem 0.5rem;
   }
-
+  
   .searchInput {
-    font-size: 0.9rem;
-  }
-}
-
-@media (max-width: 380px) {
-  .orbit {
-    transform: scale(0.9);
+    font-size: 0.75rem;
   }
 }

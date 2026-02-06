@@ -1,13 +1,42 @@
+import { useState } from 'react'
 import styles from './Page.module.css'
 
 export function PromosPage() {
+  const [isExpanded, setIsExpanded] = useState(false)
+
   return (
     <section className={styles.section} aria-labelledby="promos-title">
-      <h2 id="promos-title" className={styles.h2}>
-        Акции и бонусы
-      </h2>
+      <div className={styles.headerRow}>
+        <h2 id="promos-title" className={styles.h2}>
+          Акции и бонусы
+        </h2>
+        <button
+          type="button"
+          className={styles.toggleBtn}
+          onClick={() => setIsExpanded(!isExpanded)}
+          aria-expanded={isExpanded}
+          aria-controls="promos-content"
+        >
+          {isExpanded ? (
+            <>
+              <span>Скрыть</span>
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true">
+                <path d="M7.41 15.41 12 10.83l4.59 4.58L18 14l-6-6-6 6z" />
+              </svg>
+            </>
+          ) : (
+            <>
+              <span>Раскрыть</span>
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true">
+                <path d="M7.41 8.59 12 13.17l4.59-4.58L18 10l-6 6-6-6z" />
+              </svg>
+            </>
+          )}
+        </button>
+      </div>
 
-      <div className={styles.grid} role="list" aria-label="Список карточек">
+      {isExpanded && (
+        <div id="promos-content" className={styles.grid} role="list" aria-label="Список карточек">
         <article className={styles.card} role="listitem" aria-label="Лотерея">
           <div className={styles.cardTop}>
             <div className={styles.rank} aria-hidden="true">
@@ -47,7 +76,8 @@ export function PromosPage() {
             купоны. Все в плюсе.
           </p>
         </article>
-      </div>
+        </div>
+      )}
     </section>
   )
 }

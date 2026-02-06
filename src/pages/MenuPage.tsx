@@ -13,16 +13,12 @@ export function MenuPage() {
         Меню
       </h2>
 
-      <div className={styles.searchSection} aria-label="Поиск">
-        <div className={styles.orbit} style={{ ['--radius' as never]: 'clamp(9.75rem, 30vw, 13rem)' }}>
+      <div className={styles.orbitWrap}>
+        <div className={styles.orbit}>
           <div className={styles.center}>
-            <label className={styles.srOnly} htmlFor="menu-search">
-              Поиск по меню
-            </label>
             <div className={styles.search}>
-              <Search className={styles.searchIcon} size={18} aria-hidden="true" />
+              <Search className={styles.searchIcon} size={16} aria-hidden="true" />
               <input
-                id="menu-search"
                 className={styles.searchInput}
                 placeholder="Поиск"
                 value={query}
@@ -32,24 +28,20 @@ export function MenuPage() {
           </div>
 
           {brands.map((brand, idx) => {
-            const angle = `${(360 / brands.length) * idx}deg`
-            const angleNeg = `-${angle}`
+            const angle = (360 / brands.length) * idx
             const isActive = query.trim().toLowerCase() === brand.toLowerCase()
             return (
-              <div
+              <button
                 key={brand}
-                className={styles.brand}
-                style={{ ['--angle' as never]: angle, ['--angleNeg' as never]: angleNeg }}
+                type="button"
+                className={`${styles.brandBtn} ${isActive ? styles.brandBtnActive : ''}`}
+                style={{
+                  '--angle': `${angle}deg`,
+                } as React.CSSProperties}
+                onClick={() => setQuery(brand)}
               >
-                <button
-                  type="button"
-                  className={`${styles.brandBtn} ${isActive ? styles.brandBtnActive : ''}`}
-                  onClick={() => setQuery(brand)}
-                  aria-label={`Выбрать бренд: ${brand}`}
-                >
-                  {brand}
-                </button>
-              </div>
+                {brand}
+              </button>
             )
           })}
         </div>

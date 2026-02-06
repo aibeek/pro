@@ -35,7 +35,7 @@ export function ChampionsPage() {
         Чемпионы
       </h2>
       <p className={styles.p} aria-label="Описание">
-        Победители по итогам месяца (демо-данные).
+        Победители по итогам месяца.
       </p>
 
       <ChampionsTable rows={rows} />

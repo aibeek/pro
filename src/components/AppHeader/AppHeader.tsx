@@ -77,7 +77,10 @@ export function AppHeader({ stats }: { stats: HeaderStat[] }) {
               </span>
               <div className={styles.statText}>
                 <dt className={styles.statLabel}>{s.label}</dt>
-                <dd className={styles.statValue}>{s.value.toLocaleString('ru-RU')}</dd>
+                <dd className={styles.statValue}>
+                  <span className={styles.dollarIcon} aria-hidden="true">$</span>
+                  {s.value.toLocaleString('ru-RU')}
+                </dd>
               </div>
             </div>
           ))}

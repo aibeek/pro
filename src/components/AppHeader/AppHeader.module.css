@@ -130,4 +130,12 @@
   font-weight: 900;
   font-size: 1.05rem;
   letter-spacing: -0.02em;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.dollarIcon {
+  opacity: 0.85;
+  flex-shrink: 0;
 }
